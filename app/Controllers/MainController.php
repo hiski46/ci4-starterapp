@@ -41,10 +41,15 @@ class MainController extends BaseController
         $this->session       = \Config\Services::session();
     }
 
-    public function template($view, $data)
+    public function template($view, $data, $type = 'dashboard')
     {
-        return view('layout/header') .
-            view($view, $data) .
-            view('layout/footer');
+        if ($type == 'dashboard') {
+            $data['user'] = $user = $this->ionAuth->user()->row()->username;
+        }
+        $data = [
+            'type' => $type,
+            'view' => view($view, $data),
+        ];
+        return view('index', $data);
     }
 }

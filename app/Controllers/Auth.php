@@ -128,7 +128,7 @@ class Auth extends MainController
 			];
 
 			// return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data);
-			return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data);
+			return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data, 'login');
 		}
 	}
 

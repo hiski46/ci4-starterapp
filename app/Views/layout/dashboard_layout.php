@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -59,6 +59,7 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <script src="https://kit.fontawesome.com/077e45162e.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -73,7 +74,7 @@
             <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="#">Sign out</a>
+                    <a class="nav-link px-3" href="<?= base_url('logout') ?>">Sign out <i class="fa-solid fa-person-running"></i></a>
                 </div>
             </div>
         </header>
@@ -157,3 +158,11 @@
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <?= $this->renderSection('content') ?>
+                </main>
+            </div>
+        </div>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
