@@ -39,13 +39,16 @@ class MainController extends BaseController
         $this->validation = \Config\Services::validation();
         $this->configIonAuth = config('IonAuth');
         $this->session       = \Config\Services::session();
+        if ($this->ionAuth->loggedIn()) {
+            //create session data
+            $sessionData = (array)$this->ionAuth->user()->row();
+            unset($sessionData['password'], $sessionData['user_id']);
+            $this->session->set($sessionData);
+        }
     }
 
     public function template($view, $data, $type = 'dashboard')
     {
-        if ($type == 'dashboard') {
-            $data['user'] = $user = $this->ionAuth->user()->row()->username;
-        }
         $data = [
             'type' => $type,
             'view' => view($view, $data),

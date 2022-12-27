@@ -72,6 +72,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 
 <body class="text-center">
@@ -81,5 +83,8 @@
     </main>
 
 </body>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<?= $this->renderSection('javascript') ?>
 
 </html>

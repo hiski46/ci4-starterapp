@@ -44,7 +44,6 @@ class Auth extends MainController
 	public function __construct()
 	{
 		parent::__construct();
-
 		if (!empty($this->configIonAuth->templates['errors']['list'])) {
 			$this->validationListTemplate = $this->configIonAuth->templates['errors']['list'];
 		}
@@ -66,6 +65,8 @@ class Auth extends MainController
 			//show_error('You must be an administrator to view this page.');
 			throw new \Exception('You must be an administrator to view this page.');
 		} else {
+
+
 			$this->data['title'] = lang('Auth.index_heading');
 
 			// set the flash data error message if there is one
@@ -107,7 +108,7 @@ class Auth extends MainController
 				// redirect them back to the login page
 				$this->session->setFlashdata('message', $this->ionAuth->errors($this->validationListTemplate));
 				// use redirects instead of loading views for compatibility with MY_Controller libraries
-				return redirect()->back()->withInput();
+				return redirect()->to('/auth/login')->withInput();
 			}
 		} else {
 			// the user is not logging in so display the login page
@@ -128,6 +129,8 @@ class Auth extends MainController
 			];
 
 			// return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data);
+
+
 			return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data, 'login');
 		}
 	}

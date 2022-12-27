@@ -59,6 +59,7 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
 
@@ -73,7 +74,7 @@
             <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="<?= base_url('logout') ?>">Sign out <span class="align-text-bottom"><?= icon('box-arrow-right'); ?></span></i></a>
+                    <a class="nav-link px-3" href="<?= base_url('auth/logout') ?>">Sign out <span class="align-text-bottom"><?= icon('box-arrow-right'); ?></span></i></a>
                 </div>
             </div>
         </header>
@@ -84,7 +85,7 @@
                     <div class="position-sticky pt-3 sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
+                                <a class="nav-link active" aria-current="page" href="/">
                                     <span class="align-text-bottom">
                                         <?= icon('house-door'); ?>
                                     </span>
@@ -92,11 +93,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="auth">
                                     <span class="align-text-bottom">
-                                        <?= icon('boxes') ?>
+                                        <?= icon('people') ?>
                                     </span>
-                                    Orders
+                                    Management User
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -166,6 +167,10 @@
             </div>
         </div>
         <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+
+        <?= $this->renderSection('javascript') ?>
     </body>
 
 </html>

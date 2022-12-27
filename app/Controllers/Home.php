@@ -7,7 +7,7 @@ class Home extends MainController
 
     public function index()
     {
-        $data = ['title' => "Halaman Depan"];
-        return $this->template('test', $data);
+        $data = ['title' => "Home"];
+        return $this->template('dashboard/home', $data);
     }
 }
