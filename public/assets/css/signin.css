@@ -1,7 +1,12 @@
+
 html,
 body {
   height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 body {
   display: flex;
@@ -9,11 +14,14 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+  color: white;
 }
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 .form-signin .form-floating:focus-within {

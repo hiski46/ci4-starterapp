@@ -9,11 +9,6 @@
     <meta name="generator" content="Hugo 0.98.0">
     <title>Signin Template · Bootstrap v5.2</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
-
-
-
-
 
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -67,6 +62,10 @@
             text-align: center;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
+        }
+
+        body {
+            background-image: url("<?= base_url('image/bg1.jpg'); ?>");
         }
     </style>
 

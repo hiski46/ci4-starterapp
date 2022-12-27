@@ -34,7 +34,7 @@ class Auth extends MainController
 	 *
 	 * @var string
 	 */
-	protected $viewsFolder = 'App\Views\auth';
+	protected $viewsFolder = 'auth';
 
 	/**
 	 * Constructor

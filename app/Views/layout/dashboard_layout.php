@@ -59,7 +59,6 @@
         }
     </style>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
-    <script src="https://kit.fontawesome.com/077e45162e.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -74,7 +73,7 @@
             <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="<?= base_url('logout') ?>">Sign out <i class="fa-solid fa-person-running"></i></a>
+                    <a class="nav-link px-3" href="<?= base_url('logout') ?>">Sign out <span class="align-text-bottom"><?= icon('box-arrow-right'); ?></span></i></a>
                 </div>
             </div>
         </header>
@@ -86,13 +85,17 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">
-                                    <span data-feather="home" class="align-text-bottom"></span>
+                                    <span class="align-text-bottom">
+                                        <?= icon('house-door'); ?>
+                                    </span>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <span data-feather="file" class="align-text-bottom"></span>
+                                    <span class="align-text-bottom">
+                                        <?= icon('boxes') ?>
+                                    </span>
                                     Orders
                                 </a>
                             </li>
