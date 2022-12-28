@@ -60,7 +60,9 @@
     </style>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/iziToast.min.css">
+    <script src="/assets/js/iziToast.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -161,15 +163,26 @@
                     </div>
                 </nav>
 
+                <div id='loader' class="box">
+                    <div class="con">
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                    </div>
+                </div>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <?= $this->renderSection('content') ?>
                 </main>
             </div>
         </div>
         <script src="/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
 
-
+                $('#loader').fadeOut('slow')
+            })
+        </script>
         <?= $this->renderSection('javascript') ?>
     </body>
 

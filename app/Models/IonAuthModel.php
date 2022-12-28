@@ -2238,7 +2238,8 @@ class IonAuthModel
 		foreach ($this->messages as $message) {
 			$messageLang[] = lang($message) !== $message ? lang($message) : '##' . $message . '##';
 		}
-		return view($this->messagesTemplates['list'], ['messages' => $messageLang]);
+		// return view($this->messagesTemplates['list'], ['messages' => $messageLang]);
+		return implode(', ', $messageLang);
 	}
 
 	/**
@@ -2256,7 +2257,8 @@ class IonAuthModel
 			foreach ($this->messages as $message) {
 				$output[] = lang($message) !== $message ? lang($message) : '##' . $message . '##';
 			}
-			return $output;
+			// return $output;
+			return implode(', ', $output);
 		} else {
 			return $this->messages;
 		}
@@ -2309,7 +2311,8 @@ class IonAuthModel
 			$errors[] = lang($error) !== $error ? lang($error) : '##' . $error . '##';
 		}
 
-		return view(config('Validation')->templates[$template], ['errors' => $errors]);
+		// return view(config('Validation')->templates[$template], ['errors' => $errors]);
+		return implode(', ', $errors);
 	}
 
 	/**
