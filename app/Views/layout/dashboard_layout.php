@@ -87,7 +87,7 @@
                     <div class="position-sticky pt-3 sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">
+                                <a class="nav-link <?= isAktif(''); ?>" href="/">
                                     <span class="align-text-bottom">
                                         <?= icon('house-door'); ?>
                                     </span>
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="auth">
+                                <a class="nav-link <?= isAktif('auth'); ?>" href="auth">
                                     <span class="align-text-bottom">
                                         <?= icon('people') ?>
                                     </span>
@@ -103,7 +103,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link " href="#">
                                     <span data-feather="shopping-cart" class="align-text-bottom"></span>
                                     Products
                                 </a>

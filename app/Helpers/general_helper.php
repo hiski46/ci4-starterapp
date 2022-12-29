@@ -12,11 +12,18 @@ function icon($icon, $w = null, $h = null)
     return $icon;
 }
 
-function alert($key)
+
+/**
+ * Mengecek apakah halaman yang dibuka adalah menu yang dipilih.
+ * @param string $key nama path yang ingin dicek
+ * @param int $segment urutan segment yang ingin dicek (segment[1] = index.pxp )
+ * 
+ * @return string
+ */
+function isAktif($key, $segment = 2)
 {
-    $message = session()->getFlashdata($key);
-    if ($message) {
-        return `<div class="alert alert-danger" role="alert">` . session()->getFlashdata('message') . `</div>`;
+    if ($key === current_url(true)->getSegment($segment)) {
+        return 'active';
     }
     return false;
 }
