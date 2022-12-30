@@ -30,6 +30,9 @@ function isAktif($key, $segment = 2)
 
 function breadcrumb()
 {
+
+    $Config = new Config\Breadcrumb();
+
     $url = str_replace(base_url() . '/index.php' . '/', '', current_url());
     $urlArr = explode('/', $url);
     $html = '<nav style="--bs-breadcrumb-divider: ' . "'/'" . ';" aria-label="breadcrumb">
