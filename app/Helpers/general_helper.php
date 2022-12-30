@@ -27,3 +27,25 @@ function isAktif($key, $segment = 2)
     }
     return false;
 }
+
+function breadcrumb()
+{
+    $url = str_replace(base_url() . '/index.php' . '/', '', current_url());
+    $urlArr = explode('/', $url);
+    $html = '<nav style="--bs-breadcrumb-divider: ' . "'/'" . ';" aria-label="breadcrumb">
+        <ol class="breadcrumb">';
+    for ($i = 0; $i < count($urlArr); $i++) {
+        if ($i == 0) {
+            $html .= ' <li class="breadcrumb-item"><a href="/">Dashboard</a></li>';
+        }
+        if ($i == count($urlArr) - 1) {
+            $html .= '<li class="breadcrumb-item active" aria-current="page">' . $urlArr[$i] . '</li>';
+        } else {
+            $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $urlArr[$i] . '</a></li>';
+        }
+    }
+    $html .= '</ol>
+    </nav>';
+
+    echo $html;
+}

@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= isAktif('auth'); ?>" href="auth">
+                                <a class="nav-link <?= isAktif('auth'); ?>" href="/auth">
                                     <span class="align-text-bottom">
                                         <?= icon('people') ?>
                                     </span>
@@ -172,7 +172,10 @@
                     </div>
                 </div>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <?= $this->renderSection('content') ?>
+                    <div class="mt-3">
+                        <?php breadcrumb() ?>
+                        <?= $this->renderSection('content') ?>
+                    </div>
                 </main>
             </div>
         </div>
