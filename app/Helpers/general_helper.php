@@ -32,19 +32,23 @@ function breadcrumb()
 {
 
     $Config = new Config\Breadcrumb();
-
+    $listUrl = $Config->listUrl;
     $url = str_replace(base_url() . '/index.php' . '/', '', current_url());
     $urlArr = explode('/', $url);
     $html = '<nav style="--bs-breadcrumb-divider: ' . "'/'" . ';" aria-label="breadcrumb">
         <ol class="breadcrumb">';
     for ($i = 0; $i < count($urlArr); $i++) {
+        $url = $urlArr[$i];
+        if (isset($listUrl[$url])) {
+            $url = $listUrl[$url];
+        }
         if ($i == 0) {
             $html .= ' <li class="breadcrumb-item"><a href="/">Dashboard</a></li>';
         }
         if ($i == count($urlArr) - 1) {
-            $html .= '<li class="breadcrumb-item active" aria-current="page">' . $urlArr[$i] . '</li>';
+            $html .= '<li class="breadcrumb-item active" aria-current="page">' . $url . '</li>';
         } else {
-            $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $urlArr[$i] . '</a></li>';
+            $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $url . '</a></li>';
         }
     }
     $html .= '</ol>

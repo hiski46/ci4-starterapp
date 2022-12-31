@@ -6,12 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 
 class Breadcrumb extends BaseConfig
 {
-    private $listUrl = [
-        'auth' => 'Management User'
+    public $listUrl = [
+        'auth' => 'Management User',
+        'create_user' => 'Create User'
     ];
-
-    public function __construct()
-    {
-        $this->listUrl;
-    }
 }
