@@ -1,8 +1,10 @@
 <?php
 
+use function PHPUnit\Framework\isNan;
+
 /**
  * Get Bootstrap Icon (https://icons.getbootstrap.com/)
- * @param string $icon icon clas, contoh '0-circle'
+ * @param string $icon icon class, contoh '0-circle'
  * 
  * @return string svg script
  */
@@ -28,6 +30,12 @@ function isAktif($key, $segment = 2)
     return false;
 }
 
+
+/**
+ * Print Breadcrumb
+ * untuk mengubah nama url yang ditampilakan pada breadcrumb bisa dilakukan pada App\Config\Breadcrump.php
+ * @return string
+ */
 function breadcrumb()
 {
 
@@ -40,18 +48,25 @@ function breadcrumb()
     for ($i = 0; $i < count($urlArr); $i++) {
         $url = $urlArr[$i];
         if (isset($listUrl[$url])) {
-            $url = $listUrl[$url];
+            $url = lang($listUrl[$url]);
         }
+
         if ($i == 0) {
             $html .= ' <li class="breadcrumb-item"><a href="/">Dashboard</a></li>';
         }
         if ($i == count($urlArr) - 1) {
-            $html .= '<li class="breadcrumb-item active" aria-current="page">' . $url . '</li>';
+            if ((int)$urlArr[$i] == 0) {
+                $html .= '<li class="breadcrumb-item active" aria-current="page">' . $url . '</li>';
+            }
         } else {
-            $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $url . '</a></li>';
+            if ((int)$urlArr[$i + 1] > 0) {
+                $html .= '<li class="breadcrumb-item active" aria-current="page">' . $url . '</li>';
+            } else {
+                $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $url . '</a></li>';
+            }
         }
     }
-    $html .= '</ol>
+    $html .= '</>
     </nav>';
 
     echo $html;

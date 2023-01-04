@@ -63,3 +63,14 @@
     transform: translateX(45px);
   }
 }
+
+/* breadcrumb */
+.breadcrumb-item a{
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+.breadcrumb-item a:hover{
+  color: cornflowerblue;
+}
