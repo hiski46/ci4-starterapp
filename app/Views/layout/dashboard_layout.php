@@ -63,6 +63,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/iziToast.min.css">
     <script src="/assets/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/assets/js/index.js"></script>
 </head>
 
 <body>
@@ -178,7 +179,9 @@
                 </main>
             </div>
         </div>
+        <div id="modal"></div>
         <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
         <script>
             $(document).ready(function() {
 

@@ -1,5 +1,3 @@
-<h1><?php echo lang('Auth.edit_user_heading'); ?></h1>
-<?php breadcrumb() ?>
 <p><?php echo lang('Auth.edit_user_subheading'); ?></p>
 
 <div id="infoMessage"><?php echo $message; ?></div>

@@ -33,7 +33,7 @@ function isAktif($key, $segment = 2)
 
 /**
  * Print Breadcrumb
- * untuk mengubah nama url yang ditampilakan pada breadcrumb bisa dilakukan pada App\Config\Breadcrump.php
+ * untuk mengubah nama url yang ditampilakan pada breadcrumb bisa dilakukan pada "App\Config\Breadcrump.php"
  * @return string
  */
 function breadcrumb()

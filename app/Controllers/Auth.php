@@ -678,7 +678,14 @@ class Auth extends MainController
 		];
 		$this->data['ionAuth'] = $this->ionAuth;
 
-		return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'edit_user', $this->data);
+		return $this->modal(
+			view($this->viewsFolder . DIRECTORY_SEPARATOR . 'edit_user', $this->data),
+			lang('Auth.edit_user_heading'),
+			true,
+			true,
+			false,
+			'lg'
+		);
 	}
 
 	/**
