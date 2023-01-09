@@ -424,7 +424,7 @@ class IonAuthModel
 		if (!$id) {
 			$this->setError('IonAuth.deactivate_unsuccessful');
 			return false;
-		} else if ((new \IonAuth\Libraries\IonAuth())->loggedIn() && $this->user()->row()->id == $id) {
+		} else if ((new \App\Libraries\IonAuth())->loggedIn() && $this->user()->row()->id == $id) {
 			$this->setError('IonAuth.deactivate_current_user_unsuccessful');
 			return false;
 		}

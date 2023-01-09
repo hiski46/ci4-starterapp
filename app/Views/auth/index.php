@@ -26,9 +26,11 @@
 							<?php echo anchor('auth/edit_group/' . $group->id, htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8')); ?> |
 						<?php endforeach ?>
 					</td>
-					<td><?php echo ($user->active) ? anchor('auth/deactivate/' . $user->id, lang('Auth.index_active_link')) : anchor("auth/activate/" . $user->id, lang('Auth.index_inactive_link')); ?></td>
+
+					<td><?= ($user->active) ? '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-danger rounded-0">' . icon('lock-fill') . '</button>'; ?></td>
+					<!-- <td><?php echo ($user->active) ? anchor('auth/deactivate/' . $user->id, lang('Auth.index_active_link')) : anchor("auth/activate/" . $user->id, lang('Auth.index_inactive_link')); ?></td> -->
 					<!-- <td><?php echo anchor('auth/edit_user/' . $user->id, lang('Auth.index_edit_link')); ?> <a href=""> <?= icon('pencil-square') ?></a> </td> -->
-					<td> <button class="btn btn-sm btn-dark rounded-0" onclick="editUser('<?= base_url('auth/edit_user/' . $user->id); ?>')"> <?= icon('pencil-square') ?></button> </td>
+					<td> <button class="btn btn-sm btn-dark rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->id); ?>')"> <?= icon('pencil-square') ?></button> </td>
 				</tr>
 			<?php endforeach; ?>
 

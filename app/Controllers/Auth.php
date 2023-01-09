@@ -416,7 +416,14 @@ class Auth extends MainController
 
 		if (!$this->validation->withRequest($this->request)->run()) {
 			$this->data['user'] = $this->ionAuth->user($id)->row();
-			return $this->template($this->viewsFolder . DIRECTORY_SEPARATOR . 'deactivate_user', $this->data);
+			return $this->modal(
+				view($this->viewsFolder . DIRECTORY_SEPARATOR . 'deactivate_user', $this->data),
+				lang('Auth.deactivate_heading'),
+				true,
+				false,
+				true,
+				'sm'
+			);
 		} else {
 			// do we really want to deactivate?
 			if ($this->request->getPost('confirm') === 'yes') {

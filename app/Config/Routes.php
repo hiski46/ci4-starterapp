@@ -41,6 +41,7 @@ $routes->group('auth', static function ($routes) {
     $routes->get('(:any)', 'Auth::$1');
     $routes->get('', 'Auth::index');
     $routes->add('login', 'Auth::login');
+    $routes->post('deactivate/(:any)', 'Auth::deactivate/$1');
     // $routes->get('logout', 'Auth::logout', ['filter' => 'login']);
 });
 $routes->get('/', 'Home::index', ['filter' => 'login']);

@@ -1,5 +1,3 @@
-<h1><?php echo lang('Auth.deactivate_heading'); ?></h1>
-<?php breadcrumb() ?>
 <p><?php echo sprintf(lang('Auth.deactivate_subheading'), $user->username); ?></p>
 
 <?php echo form_open('auth/deactivate/' . $user->id); ?>
