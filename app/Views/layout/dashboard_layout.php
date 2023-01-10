@@ -60,10 +60,12 @@
     </style>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/iziToast.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="/assets/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/assets/js/index.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -164,16 +166,16 @@
                     </div>
                 </nav>
 
-                <div id='loader' class="box">
-                    <div class="con">
-                        <span class="circle"></span>
-                        <span class="circle"></span>
-                        <span class="circle"></span>
-                        <span class="circle"></span>
+                <main class="col-md-9 ms-sm-auto ps-0 col-lg-10 ">
+                    <div id='loader' class="box">
+                        <div class="con">
+                            <span class="circle"></span>
+                            <span class="circle"></span>
+                            <span class="circle"></span>
+                            <span class="circle"></span>
+                        </div>
                     </div>
-                </div>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="mt-3">
+                    <div class="ps-4 mt-3">
                         <?= $this->renderSection('content') ?>
                     </div>
                 </main>
@@ -184,8 +186,13 @@
 
         <script>
             $(document).ready(function() {
-
                 $('#loader').fadeOut('slow')
+                $('.nav-link').click(function() {
+                    $('#loader').show();
+                })
+                $('a').click(function() {
+                    $('#loader').show();
+                })
             })
         </script>
         <?= $this->renderSection('javascript') ?>
