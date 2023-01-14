@@ -422,7 +422,8 @@ class Auth extends MainController
 				true,
 				false,
 				true,
-				'sm'
+				'sm',
+				['colorSubmit' => 'btn-success', 'urlSubmit' => '#', 'status' => true]
 			);
 		} else {
 			// do we really want to deactivate?

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use function PHPUnit\Framework\isNull;
+
 class MainController extends BaseController
 {
     /**
@@ -70,8 +72,9 @@ class MainController extends BaseController
      * @param bool $scroll jika true modal bisa discroll apabila isi konten sudah lebih dari tinggi layar
      * @param bool $center jika true letak modal ditengah layar
      * @param string $size null/sm/lg/xl/fullscreen. jika null size medium
+     * @param array $footer option untuk footer key: urlSubmit, colorSubmit
      */
-    function modal($isi = null, $title = '', $staticbackdrop = true, $scroll = true, $center = false, $size = null)
+    function modal($isi = null, $title = '', $staticbackdrop = true, $scroll = true, $center = false, $size = null, $footer = ['status' => false, 'urlSubmit' => '#', 'colorSubmit' => 'btn-primary'])
     {
         if ($staticbackdrop) {
             $staticbackdrop = 'data-bs-backdrop="static"';
@@ -94,14 +97,19 @@ class MainController extends BaseController
         </div>
         <div class="modal-body">' .
             $isi
-            . '</div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            . '</div>';
+
+        if ($footer['status']) {
+            $html .= '<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn ' . $footer['colorSubmit'] . '" href="' . $footer['urlSubmit'] . '">Save changes</button>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
-    </div>';
+        </div>';
+        }
+
+
 
         return $html;
     }

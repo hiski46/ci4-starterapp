@@ -5,7 +5,7 @@
 </caption>
 <div class="table-responsive  mt-2 ">
 	<table id="tabel-user" class="table table-hover mb-0">
-		<thead class="">
+		<thead class="tbl-header">
 			<tr>
 				<th><?php echo lang('Auth.index_fname_th'); ?></th>
 				<th><?php echo lang('Auth.index_lname_th'); ?></th>
@@ -15,7 +15,7 @@
 				<th><?php echo lang('Auth.index_action_th'); ?></th>
 			</tr>
 		</thead>
-		<tbody class="">
+		<tbody class="tbl-content">
 			<?php foreach ($users as $user) : ?>
 				<tr>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
