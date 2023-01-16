@@ -27,7 +27,7 @@
 						<?php endforeach ?>
 					</td>
 
-					<td><?= ($user->active) ? '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-danger rounded-0">' . icon('lock-fill') . '</button>'; ?></td>
+					<td id="active<?= $user->id; ?>"><?= ($user->active) ? '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-danger rounded-0" onclick=activateUser(' . $user->id . ')>' . icon('lock-fill') . '</button>'; ?></td>
 					<!-- <td><?php echo ($user->active) ? anchor('auth/deactivate/' . $user->id, lang('Auth.index_active_link')) : anchor("auth/activate/" . $user->id, lang('Auth.index_inactive_link')); ?></td> -->
 					<!-- <td><?php echo anchor('auth/edit_user/' . $user->id, lang('Auth.index_edit_link')); ?> <a href=""> <?= icon('pencil-square') ?></a> </td> -->
 					<td>
@@ -49,4 +49,59 @@
 	$(document).ready(function() {
 		$("#tabel-user").DataTable();
 	});
+
+	function deactiveUser(id, url) {
+		// alert(url);
+		$.ajax({
+			url: url,
+			data: {
+				confirm: 'yes',
+				id: id
+			},
+			type: 'POST',
+			beforeSend: function(data) {
+				$('#loader').show();
+			},
+			success: function(data) {
+				location.reload(true);
+			}
+		})
+	}
+
+	function activateUser(id) {
+
+		deactiveBtn = `<?= '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' ?>`;
+		$.ajax({
+			url: "<?= base_url('auth/activate'); ?>/" + id,
+			type: 'GET',
+			beforeSend: function(data) {
+				$('#loader').show();
+			},
+			success: function(data) {
+				data = JSON.parse(data);
+				// alert(data.status);
+				if (data.status == 200) {
+					$("#active" + id).html(deactiveBtn);
+					iziToast.show({
+						title: data.message,
+						// message: 'What would you like to add?',
+						balloon: false,
+						position: 'topCenter',
+						theme: "light",
+						color: 'blue'
+					});
+				} else {
+					iziToast.show({
+						title: data.message,
+						// message: 'What would you like to add?',
+						balloon: false,
+						position: 'topCenter',
+						theme: "light",
+						color: 'red'
+					});
+				}
+				$('#loader').fadeOut('slow');
+			}
+		})
+	}
 </script>

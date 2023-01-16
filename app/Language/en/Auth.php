@@ -50,8 +50,8 @@ return [
 	// Deactivate User
 	'deactivate_heading'                  => 'Deactivate User',
 	'deactivate_subheading'               => 'Are you sure you want to deactivate the user \'%s\'',
-	'deactivate_confirm_y_label'          => 'Yes:',
-	'deactivate_confirm_n_label'          => 'No:',
+	'deactivate_confirm_y_label'          => 'Yes',
+	'deactivate_confirm_n_label'          => 'No',
 	'deactivate_submit_btn'               => 'Submit',
 	'deactivate_validation_confirm_label' => 'confirmation',
 	'deactivate_validation_user_id_label' => 'user ID',

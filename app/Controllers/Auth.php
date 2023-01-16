@@ -373,7 +373,8 @@ class Auth extends MainController
 	 *
 	 * @return \CodeIgniter\HTTP\RedirectResponse
 	 */
-	public function activate(int $id, string $code = ''): \CodeIgniter\HTTP\RedirectResponse
+	// public function activate(int $id, string $code = ''): \CodeIgniter\HTTP\RedirectResponse
+	public function activate(int $id, string $code = '')
 	{
 		$activation = false;
 
@@ -385,12 +386,16 @@ class Auth extends MainController
 
 		if ($activation) {
 			// redirect them to the auth page
-			$this->session->setFlashdata('message', $this->ionAuth->messages());
-			return redirect()->to('/auth');
+			// $this->session->setFlashdata('message', $this->ionAuth->messages());
+			// return redirect()->to('/auth');
+			$data = ['status' => 200, 'message' => $this->ionAuth->messages()];
+			return json_encode($data);
 		} else {
 			// redirect them to the forgot password page
-			$this->session->setFlashdata('message', $this->ionAuth->errors($this->validationListTemplate));
-			return redirect()->to('/auth/forgot_password');
+			// $this->session->setFlashdata('message', $this->ionAuth->errors($this->validationListTemplate));
+			// return redirect()->to('/auth/forgot_password');
+			$data = ['status' => 500, 'message' => $this->ionAuth->errors($this->validationListTemplate)];
+			return json_encode($data);
 		}
 	}
 
@@ -421,9 +426,14 @@ class Auth extends MainController
 				lang('Auth.deactivate_heading'),
 				true,
 				false,
-				true,
+				false,
 				'sm',
-				['colorSubmit' => 'btn-success', 'urlSubmit' => '#', 'status' => true]
+				true,
+				'btn-danger',
+				"deactiveUser($id,'" . base_url('auth/deactivate/' . $id) . "')",
+				lang('Auth.deactivate_confirm_y_label'),
+				'btn-secondary',
+				lang('Auth.deactivate_confirm_n_label')
 			);
 		} else {
 			// do we really want to deactivate?
@@ -435,13 +445,18 @@ class Auth extends MainController
 
 				// do we have the right userlevel?
 				if ($this->ionAuth->loggedIn() && $this->ionAuth->isAdmin()) {
-					$message = $this->ionAuth->deactivate($id) ? $this->ionAuth->messages() : $this->ionAuth->errors($this->validationListTemplate);
-					$this->session->setFlashdata('message', $message);
+					if ($this->ionAuth->deactivate($id)) {
+						$message = $this->ionAuth->messages();
+						$this->session->setFlashdata('pesan', $message);
+					} else {
+						$message = $this->ionAuth->errors($this->validationListTemplate);
+						$this->session->setFlashdata('error', $message);
+					}
 				}
 			}
 
 			// redirect them back to the auth page
-			return redirect()->to('/auth');
+			// return redirect()->to('/auth');
 		}
 	}
 
@@ -691,7 +706,7 @@ class Auth extends MainController
 			lang('Auth.edit_user_heading'),
 			true,
 			true,
-			false,
+			true,
 			'lg'
 		);
 	}

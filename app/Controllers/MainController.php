@@ -72,9 +72,14 @@ class MainController extends BaseController
      * @param bool $scroll jika true modal bisa discroll apabila isi konten sudah lebih dari tinggi layar
      * @param bool $center jika true letak modal ditengah layar
      * @param string $size null/sm/lg/xl/fullscreen. jika null size medium
-     * @param array $footer option untuk footer key: urlSubmit, colorSubmit
+     * @param bool $footer true untuk menampilkan footer, false untuk menghilangkan  
+     * @param string $colorSubmit lihat dokumentasi bootstrap contoh: "btn-primary"
+     * @param string $onclick fungsi js untuk submit
+     * @param string $textSubmit teks yang ditampilkan pada tombol submit
+     * @param string $textSubmit teks yang ditampilkan pada tombol submit
+     *   
      */
-    function modal($isi = null, $title = '', $staticbackdrop = true, $scroll = true, $center = false, $size = null, $footer = ['status' => false, 'urlSubmit' => '#', 'colorSubmit' => 'btn-primary'])
+    function modal($isi = null, $title = '', $staticbackdrop = true, $scroll = true, $center = false, $size = null, $footer = true, $colorSubmit = 'btn-primary', $onclick = "#", $textSubmit = "Submit", $colorCancel = "btn-secondary", $textCancel = "Cancel")
     {
         if ($staticbackdrop) {
             $staticbackdrop = 'data-bs-backdrop="static"';
@@ -99,10 +104,10 @@ class MainController extends BaseController
             $isi
             . '</div>';
 
-        if ($footer['status']) {
+        if ($footer) {
             $html .= '<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn ' . $footer['colorSubmit'] . '" href="' . $footer['urlSubmit'] . '">Save changes</button>
+                <button type="button" class="rounded-0 btn ' . $colorCancel . '" data-bs-dismiss="modal">' . $textCancel . '</button>
+                <button type="button" class="rounded-0 btn ' . $colorSubmit . '" onclick="' . $onclick . '">' . $textSubmit . '</button>
             </div>
             </div>
         </div>
