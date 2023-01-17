@@ -4,9 +4,10 @@
 	<?php echo lang('Auth.index_subheading'); ?>
 </caption>
 <div class="table-responsive  mt-2 ">
-	<table id="tabel-user" class="table table-hover mb-0">
-		<thead class="tbl-header">
+	<table id="tabel-user" class="table table-hover align-middle mb-0">
+		<thead>
 			<tr>
+				<th></th>
 				<th><?php echo lang('Auth.index_fname_th'); ?></th>
 				<th><?php echo lang('Auth.index_lname_th'); ?></th>
 				<th><?php echo lang('Auth.index_email_th'); ?></th>
@@ -15,16 +16,24 @@
 				<th><?php echo lang('Auth.index_action_th'); ?></th>
 			</tr>
 		</thead>
-		<tbody class="tbl-content">
+		<tbody>
 			<?php foreach ($users as $user) : ?>
 				<tr>
+					<td class="p-0">
+						<img src="https://picsum.photos/id/237/200" class="img-fluid rounded-5" alt="...">
+					</td>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
 					<td><?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?></td>
 					<td><?php echo htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8'); ?></td>
 					<td>
-						<?php foreach ($user->groups as $group) : ?>
-							<?php echo anchor('auth/edit_group/' . $group->id, htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8')); ?> |
-						<?php endforeach ?>
+						<div class="row row-cols-auto">
+							<?php foreach ($user->groups as $group) : ?>
+								<!-- <span class="bg-primary"><?php echo anchor('auth/edit_group/' . $group->id, htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8')); ?></span> | -->
+								<div class="col">
+									<span id="groupUser" class="badge rounded-0"><small class="text-capitalize"><?= $group->name; ?></small></span>
+								</div>
+							<?php endforeach ?>
+						</div>
 					</td>
 
 					<td id="active<?= $user->id; ?>"><?= ($user->active) ? '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-danger rounded-0" onclick=activateUser(' . $user->id . ')>' . icon('lock-fill') . '</button>'; ?></td>

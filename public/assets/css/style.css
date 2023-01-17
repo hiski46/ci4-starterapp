@@ -65,6 +65,7 @@
     transform: translateX(45px);
   }
 }
+/* end page loader */
 
 /* breadcrumb */
 .breadcrumb-item a{
@@ -76,9 +77,17 @@
 .breadcrumb-item a:hover{
   color: cornflowerblue;
 }
+/* End breadcrumb */
 
-/* end page loader */
+#groupUser{
+  cursor: pointer;
+  color:#ffffff;
+  background-color: dimgray;
+}
+#groupUser:hover{
+  background-color: rgb(73, 73, 73);
+  color: #ffffff;
+}
 
 /* DataTable */
-
 /* End DataTable */

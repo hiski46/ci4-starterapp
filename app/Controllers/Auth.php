@@ -426,7 +426,7 @@ class Auth extends MainController
 				lang('Auth.deactivate_heading'),
 				true,
 				false,
-				false,
+				true,
 				'sm',
 				true,
 				'btn-danger',

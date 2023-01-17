@@ -52,7 +52,7 @@ function breadcrumb()
         }
 
         if ($i == 0) {
-            $html .= ' <li class="breadcrumb-item"><a href="/">Dashboard</a></li>';
+            $html .= ' <li class="breadcrumb-item"><a class="breadcoumb" href="/">Dashboard</a></li>';
         }
         if ($i == count($urlArr) - 1) {
             if ((int)$urlArr[$i] == 0) {
@@ -62,7 +62,7 @@ function breadcrumb()
             if ((int)$urlArr[$i + 1] > 0) {
                 $html .= '<li class="breadcrumb-item active" aria-current="page">' . $url . '</li>';
             } else {
-                $html .= ' <li class="breadcrumb-item"><a href="/' . $urlArr[$i] . '">' . $url . '</a></li>';
+                $html .= ' <li class="breadcrumb-item"><a class="breadcoumb" href="/' . $urlArr[$i] . '">' . $url . '</a></li>';
             }
         }
     }
