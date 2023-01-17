@@ -19,7 +19,7 @@
 		<tbody>
 			<?php foreach ($users as $user) : ?>
 				<tr>
-					<td class="p-0">
+					<td class="">
 						<img src="https://picsum.photos/id/237/200" class="img-fluid rounded-5" alt="...">
 					</td>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -29,7 +29,7 @@
 						<div class="row row-cols-auto">
 							<?php foreach ($user->groups as $group) : ?>
 								<!-- <span class="bg-primary"><?php echo anchor('auth/edit_group/' . $group->id, htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8')); ?></span> | -->
-								<div class="col">
+								<div class="col px-1">
 									<span id="groupUser" class="badge rounded-0"><small class="text-capitalize"><?= $group->name; ?></small></span>
 								</div>
 							<?php endforeach ?>

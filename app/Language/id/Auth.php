@@ -1,22 +1,23 @@
 <?php
+
 /**
-* Name:  Auth Lang - Indonesia
-*
-* Author: 	Daeng Muhammad Feisal
-*     http://daengdoang.wordpress.com
-*			daengdoang@gmail.com
-*			@daengdoang
-*
-*
-*
-* Location: http://github.com/benedmunds/ion_auth/
-*
-* Created:  21.06.2013
-* Last-Edit: 21.06.2017
-*
-* Description:  Indonesia language file for Ion Auth example views
-*
-*/
+ * Name:  Auth Lang - Indonesia
+ *
+ * Author: 	Daeng Muhammad Feisal
+ *     http://daengdoang.wordpress.com
+ *			daengdoang@gmail.com
+ *			@daengdoang
+ *
+ *
+ *
+ * Location: http://github.com/benedmunds/ion_auth/
+ *
+ * Created:  21.06.2013
+ * Last-Edit: 21.06.2017
+ *
+ * Description:  Indonesia language file for Ion Auth example views
+ *
+ */
 
 return [
 	// Errors
@@ -49,8 +50,8 @@ return [
 	// Deactivate User
 	'deactivate_heading'                  => 'Deaktivasi Pengguna',
 	'deactivate_subheading'               => 'Anda yakin akan melakukan deaktivasi akun Pengguna \'%s\'',
-	'deactivate_confirm_y_label'          => 'Ya:',
-	'deactivate_confirm_n_label'          => 'Tidak:',
+	'deactivate_confirm_y_label'          => 'Ya',
+	'deactivate_confirm_n_label'          => 'Tidak',
 	'deactivate_submit_btn'               => 'Kirim',
 	'deactivate_validation_confirm_label' => 'konfirmasi',
 	'deactivate_validation_user_id_label' => 'ID Pengguna',
