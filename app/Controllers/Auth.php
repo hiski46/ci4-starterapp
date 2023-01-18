@@ -57,7 +57,7 @@ class Auth extends MainController
 	public function index()
 	{
 		if (!$this->ionAuth->loggedIn()) {
-			// redirect them to the login page
+			// redirect them to the login page 
 			return redirect()->to('/auth/login');
 		} else if (!$this->ionAuth->isAdmin()) // remove this elseif if you want to enable this for non-admins
 		{

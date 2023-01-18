@@ -20,7 +20,7 @@
 			<?php foreach ($users as $user) : ?>
 				<tr>
 					<td class="">
-						<img src="https://picsum.photos/id/237/200" class="img-fluid rounded-5" alt="...">
+						<img id="thumbnail" src="/image/sm/<?= $user->small; ?>" class="img-fluid img-thumbnail" alt="...">
 					</td>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
 					<td><?php echo htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8'); ?></td>

@@ -89,5 +89,11 @@
   color: #ffffff;
 }
 
+img#thumbnail{
+  width: 5vw;
+  border-radius: 100%;
+}
+
+
 /* DataTable */
 /* End DataTable */

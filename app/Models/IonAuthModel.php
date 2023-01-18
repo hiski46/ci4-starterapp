@@ -1308,7 +1308,7 @@ class IonAuthModel
 		$this->triggerEvents('users');
 
 		$builder = $this->db->table($this->tables['users']);
-
+		// $builder->select('image.small');
 		if (!empty($this->ionSelect)) {
 			foreach ($this->ionSelect as $select) {
 				$builder->select($select);
@@ -1321,8 +1321,10 @@ class IonAuthModel
 				$this->tables['users'] . '.*',
 				$this->tables['users'] . '.id as id',
 				$this->tables['users'] . '.id as user_id',
+				"image.*"
 			]);
 		}
+		$builder->join('image', 'image.id=users.img');
 
 		// filter by group id(s) if passed
 		if (isset($groups)) {
@@ -1330,7 +1332,6 @@ class IonAuthModel
 			if (!is_array($groups)) {
 				$groups = [$groups];
 			}
-
 			// join and then run a where_in against the group ids
 			if (!empty($groups)) {
 				$builder->distinct();
