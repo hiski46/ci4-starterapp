@@ -90,9 +90,27 @@
 }
 
 img#thumbnail{
-  width: 5vw;
+  width: 4vw;
   border-radius: 100%;
 }
+
+@media (max-width:600px) {
+  img#thumbnail{
+    width: 7vw;
+  }
+  .img-thumbnail{
+    max-width:fit-content ;
+  }
+}
+@media (max-width:900px) {
+  img#thumbnail{
+    width:13vw;
+  }
+  .img-thumbnail{
+    max-width:fit-content ;
+  }
+}
+
 
 
 /* DataTable */

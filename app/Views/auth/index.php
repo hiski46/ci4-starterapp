@@ -19,7 +19,7 @@
 		<tbody>
 			<?php foreach ($users as $user) : ?>
 				<tr>
-					<td class="">
+					<td class="text-center">
 						<img id="thumbnail" src="/image/sm/<?= $user->small; ?>" class="img-fluid img-thumbnail" alt="...">
 					</td>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -36,13 +36,13 @@
 						</div>
 					</td>
 
-					<td id="active<?= $user->id; ?>"><?= ($user->active) ? '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-danger rounded-0" onclick=activateUser(' . $user->id . ')>' . icon('lock-fill') . '</button>'; ?></td>
-					<!-- <td><?php echo ($user->active) ? anchor('auth/deactivate/' . $user->id, lang('Auth.index_active_link')) : anchor("auth/activate/" . $user->id, lang('Auth.index_inactive_link')); ?></td> -->
-					<!-- <td><?php echo anchor('auth/edit_user/' . $user->id, lang('Auth.index_edit_link')); ?> <a href=""> <?= icon('pencil-square') ?></a> </td> -->
+					<td id="active<?= $user->user_id; ?>"><?= ($user->active) ? '<button class="btn btn-sm btn-outline-success border-0 rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->user_id) . '")>' . icon('unlock-fill') . '</button>' : '<button class="btn btn-sm btn-outline-danger border-0 rounded-0" onclick=activateUser(' . $user->user_id . ')>' . icon('lock-fill') . '</button>'; ?></td>
+					<!-- <td><?php echo ($user->active) ? anchor('auth/deactivate/' . $user->user_id, lang('Auth.index_active_link')) : anchor("auth/activate/" . $user->user_id, lang('Auth.index_inactive_link')); ?></td> -->
+					<!-- <td><?php echo anchor('auth/edit_user/' . $user->user_id, lang('Auth.index_edit_link')); ?> <a href=""> <?= icon('pencil-square') ?></a> </td> -->
 					<td>
 						<div class="btn-group">
-							<button class="btn btn-sm btn-outline-success rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->id); ?>')"> <?= icon('pencil-square') ?></button>
-							<button class="btn btn-sm btn-outline-danger rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->id); ?>')"> <?= icon('trash3-fill') ?></button>
+							<button class="btn btn-sm btn-outline-success border-0 rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->user_id); ?>')"> <?= icon('pencil-square') ?></button>
+							<button class="btn btn-sm btn-outline-danger border-0 rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->user_id); ?>')"> <?= icon('trash3-fill') ?></button>
 
 						</div>
 					</td>
@@ -78,8 +78,8 @@
 	}
 
 	function activateUser(id) {
-
-		deactiveBtn = `<?= '<button class="btn btn-sm btn-success rounded-0" onclick=modal("' . base_url('auth/deactivate/' . $user->id) . '")>' . icon('unlock-fill') . '</button>' ?>`;
+		urldeactive = "<?= base_url('auth/deactivate') ?>/" + id;
+		deactiveBtn = `<button class="btn btn-sm btn-outline-success border-0 rounded-0" onclick=modal("` + urldeactive + `")> <?= icon('unlock-fill'); ?> </button>`;
 		$.ajax({
 			url: "<?= base_url('auth/activate'); ?>/" + id,
 			type: 'GET',

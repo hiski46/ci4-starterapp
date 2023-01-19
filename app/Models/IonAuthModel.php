@@ -1321,10 +1321,11 @@ class IonAuthModel
 				$this->tables['users'] . '.*',
 				$this->tables['users'] . '.id as id',
 				$this->tables['users'] . '.id as user_id',
-				"image.*"
+				"image.small",
+				"image.medium",
+				"image.large"
 			]);
 		}
-		$builder->join('image', 'image.id=users.img');
 
 		// filter by group id(s) if passed
 		if (isset($groups)) {
@@ -1362,6 +1363,8 @@ class IonAuthModel
 				$builder->{$orWhereIn}($this->tables['users_groups'] . '.' . $this->join['groups'], $groupIds);
 			}
 		}
+		$builder->join('image', 'image.id=users.img');
+
 
 		$this->triggerEvents('extra_where');
 
