@@ -506,7 +506,7 @@ class Auth extends MainController
 		if ($this->request->getPost() && $this->validation->withRequest($this->request)->run() && $this->ionAuth->register($identity, $password, $email, $additionalData)) {
 			// check to see if we are creating the user
 			// redirect them back to the admin page
-			$this->session->setFlashdata('message', $this->ionAuth->messages());
+			$this->session->setFlashdata('pesan', $this->ionAuth->messages());
 			return redirect()->to('/auth');
 		} else {
 			// display the create user form
@@ -839,6 +839,13 @@ class Auth extends MainController
 			return $viewHtml;
 		} else {
 			echo $viewHtml;
+		}
+	}
+
+	public function delete_user($id)
+	{
+		if ($this->delete_user($id)) {
+			return true;
 		}
 	}
 }

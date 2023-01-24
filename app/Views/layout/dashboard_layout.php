@@ -195,6 +195,8 @@
                 $('a.breadcrumb').click(function() {
                     $('#loader').show();
                 })
+
+                $('.errors').addClass('alert alert-danger pb-0 mb-2');
             })
         </script>
         <?= $this->renderSection('javascript') ?>

@@ -18,6 +18,7 @@
 		</thead>
 		<tbody>
 			<?php foreach ($users as $user) : ?>
+
 				<tr>
 					<td class="text-center">
 						<img id="thumbnail" src="/image/sm/<?= $user->small; ?>" class="img-fluid img-thumbnail" alt="...">
@@ -41,8 +42,8 @@
 					<!-- <td><?php echo anchor('auth/edit_user/' . $user->user_id, lang('Auth.index_edit_link')); ?> <a href=""> <?= icon('pencil-square') ?></a> </td> -->
 					<td>
 						<div class="btn-group">
-							<button class="btn btn-sm btn-outline-success border-0 rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->user_id); ?>')"> <?= icon('pencil-square') ?></button>
-							<button class="btn btn-sm btn-outline-danger border-0 rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->user_id); ?>')"> <?= icon('trash3-fill') ?></button>
+							<button class="btn btn-sm btn-outline-primary border-0 rounded-0" onclick="modal('<?= base_url('auth/edit_user/' . $user->user_id); ?>')"> <?= icon('pencil-square') ?></button>
+							<button class="btn btn-sm btn-outline-danger border-0 rounded-0" modal="delete-alert" target-url="<?= base_url('auth/delete_user/' . $user->user_id); ?>" data="<?= $user->username; ?>"> <?= icon('trash3-fill') ?></button>
 
 						</div>
 					</td>

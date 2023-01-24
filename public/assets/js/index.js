@@ -16,3 +16,50 @@ function modal(url) {
     })
 }
 
+function modalAlertDelete(url, data){
+    let html = `<div class="modal fade" id="exampleModal1" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModal1Label">Delete Data</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Are you sure to delete <b>`+data+`</b> ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal" >Cancel</button>
+          <button type="button" class="btn btn-danger rounded-0" onclick="deleteData('`+url+`')">Delete</button>
+        </div>
+      </div>
+    </div>
+    </div>`;
+    $('#modal').html(html);
+    $('#exampleModal1').modal('show');
+
+}
+
+function deleteData(url){
+    $.ajax({
+        url:url,
+        type:'GET',
+        beforeSend:function(data){
+            $('#loader').show();
+        },
+        success: function(data){
+            $('#loader').fadeOut('slow');
+        }
+    })
+}
+
+$(document).ready(function(){
+    $('[modal="delete-alert"]').click(function(){
+        let type = $(this).attr('modal');
+        let url = $(this).attr('target-url');
+        let data = $(this).attr('data');
+        if (type==='delete-alert') {
+            modalAlertDelete(url, data);
+        }
+    })
+})
+
