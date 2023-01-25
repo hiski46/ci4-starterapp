@@ -47,7 +47,21 @@ function deleteData(url){
             $('#loader').show();
         },
         success: function(data){
-            $('#loader').fadeOut('slow');
+            data = JSON.parse(data);
+            if (data.status===200) {
+                location.reload(true);
+            }else if(data.status===500){
+                iziToast.show({
+                    title: data.message,
+                    // message: 'What would you like to add?',
+                    balloon: false,
+                    position: 'topCenter',
+                    theme: "light",
+                    color: 'red'
+                });
+                $('#loader').fadeOut('slow');
+                $('#exampleModal1').modal('hide');
+            }
         }
     })
 }

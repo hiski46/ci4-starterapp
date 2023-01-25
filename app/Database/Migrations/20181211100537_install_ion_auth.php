@@ -49,6 +49,30 @@ class Migration_Install_ion_auth extends \CodeIgniter\Database\Migration
 	 */
 	public function up()
 	{
+		$this->forge->dropTable('image', true);
+		$this->forge->addField([
+			'id' => [
+				'type'				=> 'INT',
+				'constraint'		=> '11',
+				'unsigned'			=> true,
+				'auto_increment' 	=> true,
+			],
+			'small' => [
+				'type'		=> 'VARCHAR',
+				'constraint'	=> '255',
+			],
+			'medium' => [
+				'type'		=> 'VARCHAR',
+				'constraint'	=> '255',
+			],
+			'large' => [
+				'type'		=> 'VARCHAR',
+				'constraint'	=> '255',
+			]
+		]);
+		$this->forge->addKey('id', true);
+		$this->forge->createTable('image');
+
 		// Drop table 'groups' if it exists
 		$this->forge->dropTable($this->tables['groups'], true);
 
@@ -176,8 +200,16 @@ class Migration_Install_ion_auth extends \CodeIgniter\Database\Migration
 				'constraint' => '20',
 				'null'       => true,
 			],
+			'img' => [
+				'type'       => 'INT',
+				'constraint' => '11',
+				'unsigned'	 => true,
+				'default'	=> 1
+			],
+
 		]);
 		$this->forge->addKey('id', true);
+		$this->forge->addForeignKey('img', 'image', 'id', 'CASCADE', 'CASCADE');
 		$this->forge->createTable($this->tables['users'], false);
 
 		// Drop table 'users_groups' if it exists

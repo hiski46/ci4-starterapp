@@ -1,9 +1,16 @@
 <h1><?php echo lang('Auth.index_heading'); ?></h1>
 <?php breadcrumb() ?>
-<caption>
-	<?php echo lang('Auth.index_subheading'); ?>
-</caption>
-<div class="table-responsive  mt-2 ">
+<div class="row">
+	<div class="col">
+		<?php echo lang('Auth.index_subheading'); ?>
+	</div>
+	<div class="col text-end">
+		<a href="auth/create_user" class="btn btn-sm btn-outline-secondary"><?= icon('person-add') . ' ' . lang('Auth.index_create_user_link'); ?></a>
+		<a href="auth/create_group" class="btn btn-sm btn-outline-secondary mt-1"><?= icon('people') . ' ' . lang('Auth.index_create_group_link'); ?></a>
+	</div>
+</div>
+
+<div class="table-responsive mt-2 ">
 	<table id="tabel-user" class="table table-hover align-middle mb-0">
 		<thead>
 			<tr>
@@ -20,7 +27,7 @@
 			<?php foreach ($users as $user) : ?>
 
 				<tr>
-					<td class="text-center">
+					<td class="text-center" style="width:1px; white-space:nowrap;">
 						<img id="thumbnail" src="/image/sm/<?= $user->small; ?>" class="img-fluid img-thumbnail" alt="...">
 					</td>
 					<td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -54,7 +61,7 @@
 	</table>
 </div>
 
-<p><?php echo anchor('auth/create_user', lang('Auth.index_create_user_link')) ?> | <?php echo anchor('auth/create_group', lang('Auth.index_create_group_link')) ?></p>
+
 <script>
 	$(document).ready(function() {
 		$("#tabel-user").DataTable();

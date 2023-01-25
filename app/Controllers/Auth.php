@@ -844,8 +844,27 @@ class Auth extends MainController
 
 	public function delete_user($id)
 	{
-		if ($this->delete_user($id)) {
-			return true;
+
+		if (!$this->ionAuth->loggedIn() || !$this->ionAuth->isAdmin() || ($this->ionAuth->user()->row()->id == $id)) {
+			$msg = [
+				'status' => 500,
+				'message' => "Data gagal dihapus. Anda tidak bisa menghapus diri sendiri, Anda harus Admin"
+			];
+			return json_encode($msg);
+		} else {
+			if ($this->ionAuth->deleteUser($id)) {
+				$msg = [
+					'status' => 200,
+					'message' => 'Data berhasil dihapus'
+				];
+				$this->session->setFlashdata('pesan', $msg['message']);
+			} else {
+				$msg = [
+					'status' => 500,
+					'message' => $this->ionAuth->errors($this->validationListTemplate)
+				];
+			}
+			return json_encode($msg);
 		}
 	}
 }

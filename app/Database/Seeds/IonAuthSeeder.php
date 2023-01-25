@@ -18,20 +18,27 @@ class IonAuthSeeder extends \CodeIgniter\Database\Seeder
 		$config = config('IonAuth\\Config\\IonAuth');
 		$this->DBGroup = empty($config->databaseGroupName) ? '' : $config->databaseGroupName;
 		$tables        = $config->tables;
-
+		$this->db->transStart();
 		$groups = [
 			[
-				'id'          => 1,
 				'name'        => 'admin',
 				'description' => 'Administrator',
 			],
 			[
-				'id'          => 2,
 				'name'        => 'members',
 				'description' => 'General User',
-			],
+			]
 		];
 		$this->db->table($tables['groups'])->insertBatch($groups);
+
+		$img = [
+			[
+				'small' 	=> 'default.png',
+				'medium' 	=> 'default.png',
+				'large' 	=> 'default.png',
+			]
+		];
+		$this->db->table('image')->insertBatch($img);
 
 		$users = [
 			[
@@ -48,7 +55,8 @@ class IonAuthSeeder extends \CodeIgniter\Database\Seeder
 				'last_name'               => 'istrator',
 				'company'                 => 'ADMIN',
 				'phone'                   => '0',
-			],
+				'img' => 1
+			]
 		];
 		$this->db->table($tables['users'])->insertBatch($users);
 
@@ -60,8 +68,9 @@ class IonAuthSeeder extends \CodeIgniter\Database\Seeder
 			[
 				'user_id'  => '1',
 				'group_id' => '2',
-			],
+			]
 		];
 		$this->db->table($tables['users_groups'])->insertBatch($usersGroups);
+		$this->db->transComplete();
 	}
 }
