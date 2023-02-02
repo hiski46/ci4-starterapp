@@ -147,4 +147,7 @@ return [
 	'reset_password_submit_btn'                            => 'Change',
 	'reset_password_validation_new_password_label'         => 'New Password',
 	'reset_password_validation_new_password_confirm_label' => 'Confirm New Password',
+
+	//Profil Picture
+	'profile_picture_lable'				=>	"Profile Picture"
 ];

@@ -8,10 +8,15 @@ use function PHPUnit\Framework\isNan;
  * 
  * @return string svg script
  */
-function icon($icon, $w = null, $h = null)
+function icon($icon, $w = 16, $h = 16)
 {
     $icon = file_get_contents(ROOTPATH . 'public/icon/' . $icon . '.svg');
-    return $icon;
+    $dom = new DOMDocument();
+    $dom->loadXML($icon);
+    $icon_new = $dom->getElementsByTagName('svg')[0];
+    $icon_new->setAttribute("width", $w);
+    $icon_new->setAttribute("height", $h);
+    return $icon_new->C14N();
 }
 
 

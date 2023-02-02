@@ -178,7 +178,9 @@
                         </div>
                     </div>
                     <div class="ps-4 mt-3">
-                        <?= $this->renderSection('content') ?>
+                        <div class="container">
+                            <?= $this->renderSection('content') ?>
+                        </div>
                     </div>
                 </main>
             </div>

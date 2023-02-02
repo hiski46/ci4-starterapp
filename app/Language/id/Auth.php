@@ -147,4 +147,7 @@ return [
 	'reset_password_submit_btn'                            => 'Ubah',
 	'reset_password_validation_new_password_label'         => 'Kata Sandi Baru',
 	'reset_password_validation_new_password_confirm_label' => 'Konfirmasi Kata Sandi Baru',
+
+	//Profil Picture
+	'profile_picture_lable'				=>	"Foto Profil"
 ];

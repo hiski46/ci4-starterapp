@@ -146,3 +146,31 @@ li.paginate_button.active a{
 }
 
 /* End DataTable */
+
+/* Upload Foto Profil */
+.image-upload>input {
+  display: none;
+}
+
+.image-upload label img {
+  border-radius: 100%;
+}
+
+.image-upload label img:hover{
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.file-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-foto{
+  position: absolute;
+  z-index: 10;
+  color: grey;
+  display: none;
+  width: 20px;
+}

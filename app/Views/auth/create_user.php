@@ -5,12 +5,24 @@
 <div id="infoMessage"><?php echo $message; ?></div>
 
 <?php echo form_open('auth/create_user', ['class' => 'pe-3']); ?>
+<div class="text-center">
+      <div class="mb-3 image-upload">
+            <label for="formFile" class="file-input ">
+                  <span class="icon-foto fw-bold"><?= icon("camera", 25, 25); ?></span>
+                  <img src="/image/sm/default.png" alt="<?= lang('Auth.profile_picture_lable'); ?>">
+            </label>
+            <input class="fileinput" type="file" id="formFile">
+      </div>
+</div>
 
 <div class="row">
       <div class="col-md-6 col-lg-3">
-            <div class="form-floating mb-3">
-                  <?php echo form_input($first_name, '', ['class' => 'form-control rounded-0', 'placeholder' => 'first name']); ?>
-                  <?php echo form_label(icon('people') . ' ' . lang('Auth.create_user_fname_label'), 'first_name', ['for' => 'first_name']); ?>
+            <div class="input-group mb-3 ">
+                  <span class="input-group-text rounded-0"><?= icon('people') ?></span>
+                  <div class="form-floating">
+                        <?php echo form_input($first_name, '', ['class' => 'form-control rounded-0', 'placeholder' => 'first name']); ?>
+                        <?php echo form_label(lang('Auth.create_user_fname_label'), 'first_name', ['for' => 'first_name']); ?>
+                  </div>
             </div>
       </div>
       <div class="col-md-6 col-lg-3">
@@ -34,34 +46,46 @@ if ($identity_column !== 'email') {
 ?>
 <div class="row">
       <div class="col-lg-6">
-            <div class="form-floating mb-3">
-                  <?php echo form_input($company, '', ['class' => 'form-control rounded-0', 'placeholder' => 'company']); ?>
-                  <?php echo form_label(icon('buildings') . ' ' . lang('Auth.create_user_company_label'), 'company', ['for' => 'company']); ?>
+            <div class="input-group mb-3">
+                  <span class="input-group-text rounded-0"><?= icon('buildings') ?></span>
+                  <div class="form-floating">
+                        <?php echo form_input($company, '', ['class' => 'form-control rounded-0', 'placeholder' => 'company']); ?>
+                        <?php echo form_label(lang('Auth.create_user_company_label'), 'company', ['for' => 'company']); ?>
+                  </div>
             </div>
       </div>
 </div>
 <div class="row">
       <div class="col-lg-6">
-            <div class="form-floating mb-3">
-                  <?php echo form_input($phone, '', ['class' => 'form-control rounded-0', 'placeholder' => 'phone']); ?>
-                  <?php echo form_label(icon('telephone') . ' ' . lang('Auth.create_user_phone_label'), 'phone', ['for' => 'phone']); ?>
+            <div class="input-group mb-3">
+                  <span class="input-group-text rounded-0"><?= icon('telephone') ?></span>
+                  <div class="form-floating mb">
+                        <?php echo form_input($phone, '', ['class' => 'form-control rounded-0', 'placeholder' => 'phone']); ?>
+                        <?php echo form_label(lang('Auth.create_user_phone_label'), 'phone', ['for' => 'phone']); ?>
+                  </div>
             </div>
       </div>
 </div>
 <div class="row">
       <div class="col-lg-6">
-            <div class="form-floating mb-3">
-                  <?php echo form_input($email, '', ['class' => 'form-control rounded-0', 'placeholder' => 'email']); ?>
-                  <?php echo form_label(icon('envelope') . ' ' . lang('Auth.create_user_email_label'), 'email', ['for' => 'email']); ?>
+            <div class="input-group mb-3">
+                  <span class="input-group-text rounded-0"><?= icon('envelope') ?></span>
+                  <div class="form-floating">
+                        <?php echo form_input($email, '', ['class' => 'form-control rounded-0', 'placeholder' => 'email']); ?>
+                        <?php echo form_label(lang('Auth.create_user_email_label'), 'email', ['for' => 'email']); ?>
+                  </div>
             </div>
       </div>
 </div>
 
 <div class="row">
       <div class="col-lg-3 col-md-6">
-            <div class="form-floating mb-3">
-                  <?php echo form_input($password, '', ['class' => 'form-control rounded-0', 'placeholder' => 'password']); ?>
-                  <?php echo form_label(icon('key') . ' ' . lang('Auth.create_user_password_label'), 'password', ['for' => 'password']); ?>
+            <div class="input-group mb-3">
+                  <span class="input-group-text rounded-0"><?= icon('key') ?></span>
+                  <div class="form-floating">
+                        <?php echo form_input($password, '', ['class' => 'form-control rounded-0', 'placeholder' => 'password']); ?>
+                        <?php echo form_label(lang('Auth.create_user_password_label'), 'password', ['for' => 'password']); ?>
+                  </div>
             </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -71,6 +95,7 @@ if ($identity_column !== 'email') {
             </div>
       </div>
 </div>
+
 <button type="submit" class="btn rounded-0 btn-primary"><?= icon('folder-plus') . ' ' . lang('Auth.create_user_submit_btn')    ?></button>
 
 <?php echo form_close(); ?>
