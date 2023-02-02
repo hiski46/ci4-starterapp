@@ -33,19 +33,23 @@ if ($identity_column !== 'email') {
 }
 ?>
 <div class="row">
-      <div class="col-md-4 col-lg-3">
+      <div class="col-lg-6">
             <div class="form-floating mb-3">
                   <?php echo form_input($company, '', ['class' => 'form-control rounded-0', 'placeholder' => 'company']); ?>
                   <?php echo form_label(icon('buildings') . ' ' . lang('Auth.create_user_company_label'), 'company', ['for' => 'company']); ?>
             </div>
       </div>
-      <div class="col-md-4 col-lg-2">
+</div>
+<div class="row">
+      <div class="col-lg-6">
             <div class="form-floating mb-3">
                   <?php echo form_input($phone, '', ['class' => 'form-control rounded-0', 'placeholder' => 'phone']); ?>
                   <?php echo form_label(icon('telephone') . ' ' . lang('Auth.create_user_phone_label'), 'phone', ['for' => 'phone']); ?>
             </div>
       </div>
-      <div class="col-md-4 col-lg-4">
+</div>
+<div class="row">
+      <div class="col-lg-6">
             <div class="form-floating mb-3">
                   <?php echo form_input($email, '', ['class' => 'form-control rounded-0', 'placeholder' => 'email']); ?>
                   <?php echo form_label(icon('envelope') . ' ' . lang('Auth.create_user_email_label'), 'email', ['for' => 'email']); ?>
@@ -54,13 +58,13 @@ if ($identity_column !== 'email') {
 </div>
 
 <div class="row">
-      <div class="col-lg-2 col-md-6">
+      <div class="col-lg-3 col-md-6">
             <div class="form-floating mb-3">
                   <?php echo form_input($password, '', ['class' => 'form-control rounded-0', 'placeholder' => 'password']); ?>
                   <?php echo form_label(icon('key') . ' ' . lang('Auth.create_user_password_label'), 'password', ['for' => 'password']); ?>
             </div>
       </div>
-      <div class="col-lg-2 col-md-6">
+      <div class="col-lg-3 col-md-6">
             <div class="form-floating mb-3">
                   <?php echo form_input($password_confirm, '', ['class' => 'form-control rounded-0', 'placeholder' => 'password_confirm']); ?>
                   <?php echo form_label(lang('Auth.create_user_password_confirm_label'), 'password_confirm', ['for' => 'password_confirm']); ?>

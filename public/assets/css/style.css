@@ -134,4 +134,15 @@ img#thumbnail{
 
 
 /* DataTable */
+.form-select,
+[type='search']
+{
+  border-radius: 0;
+}
+
+li.paginate_button.active a{
+  background-color: gray;
+  border:none;
+}
+
 /* End DataTable */
