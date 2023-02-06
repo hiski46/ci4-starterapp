@@ -4,14 +4,22 @@
 
 <div id="infoMessage"><?php echo $message; ?></div>
 
-<?php echo form_open('auth/create_user', ['class' => 'pe-3']); ?>
-<div class="text-center">
-      <div class="mb-3 image-upload">
-            <label for="formFile" class="file-input ">
-                  <span class="icon-foto fw-bold"><?= icon("camera", 25, 25); ?></span>
-                  <img src="/image/sm/default.png" alt="<?= lang('Auth.profile_picture_lable'); ?>">
-            </label>
-            <input class="fileinput" type="file" id="formFile">
+<?php echo form_open_multipart('auth/create_user', ['class' => 'pe-3']); ?>
+<div class="row ">
+      <div class="col-lg-6">
+            <div class=" mb-3 image-upload">
+                  <label for="formFile" class="file-input ">
+                        <span class="icon-foto fw-bold"><?= icon("camera", 25, 25); ?></span>
+                        <img src="/image/md/default.png" alt="<?= lang('Auth.profile_picture_lable'); ?>">
+                  </label>
+                  <input class="fileinput" type="file" id="formFile" name="foto_profil" accept="image/*">
+                  <script>
+                        $('.fileinput').change(function(event) {
+                              console.log($(this).val());
+                              $('label.file-input img').attr('src', URL.createObjectURL(event.target.files[0]));
+                        })
+                  </script>
+            </div>
       </div>
 </div>
 

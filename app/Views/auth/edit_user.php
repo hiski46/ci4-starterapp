@@ -3,7 +3,6 @@
 <div id="infoMessage"><?php echo $message; ?></div>
 
 <?php echo form_open(uri_string()); ?>
-
 <p>
       <?php echo form_label(lang('Auth.edit_user_fname_label'), 'first_name'); ?> <br />
       <?php echo form_input($first_name); ?>

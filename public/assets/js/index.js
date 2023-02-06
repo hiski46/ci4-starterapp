@@ -75,7 +75,7 @@ $(document).ready(function(){
             modalAlertDelete(url, data);
         }
     })
-    $('.image-upload').hover(function(){
+    $('label.file-input img').hover(function(){
         $('.icon-foto').show()
     }, function(){$('.icon-foto').hide()})
 })

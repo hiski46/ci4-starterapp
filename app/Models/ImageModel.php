@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
 class ImageModel extends Model
 {
     protected $table            = 'image';
@@ -14,4 +15,19 @@ class ImageModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = false;
     protected $allowedFields    = [];
+}
+
+function uploadImage($file)
+{
+    if (!$file->hasMoved()) {
+        $filepath = WRITEPATH . 'uploads/' . $file->store();
+
+        $data = ['uploaded_fileinfo' => new File($filepath)];
+
+        return true;
+    }
+
+    $data = ['errors' => 'The file has already been moved.'];
+
+    return false;
 }

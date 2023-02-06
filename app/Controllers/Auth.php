@@ -2,6 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\ImageModel;
+use CodeIgniter\Model;
+use CodeIgniter\Files\File;
+
+use function PHPUnit\Framework\isNull;
+
 /**
  * Class Auth
  *
@@ -490,18 +496,60 @@ class Auth extends MainController
 		$this->validation->setRule('company', lang('Auth.create_user_validation_company_label'), 'trim');
 		$this->validation->setRule('password', lang('Auth.create_user_validation_password_label'), 'required|min_length[' . $this->configIonAuth->minPasswordLength . ']|matches[password_confirm]');
 		$this->validation->setRule('password_confirm', lang('Auth.create_user_validation_password_confirm_label'), 'required');
-
+		$this->validation->setRule(
+			'foto_profil',
+			'Foto Profil',
+			'max_size[foto_profil,10000]'
+		);
 		if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
 			$email    = strtolower($this->request->getPost('email'));
 			$identity = ($identityColumn === 'email') ? $email : $this->request->getPost('identity');
 			$password = $this->request->getPost('password');
+
+			$ImageModel = new \App\Models\ImageModel();
+			$image = 1;
+			//Upload Image
+			$imgTemp = $this->request->getFile('foto_profil');
+			if ($imgTemp->isFile()) {
+				if (!$imgTemp->hasMoved()) {
+					$image = \Config\Services::image();
+
+					$filepath = WRITEPATH . 'uploads/' . $imgTemp->store();
+					$name = $imgTemp->getName();
+					$sm_path = WRITEPATH . 'uploads/sm_' . $name;
+					$md_path = WRITEPATH . 'uploads/md_' . $name;
+					$image->withFile($filepath)->fit(100, 100, 'center')->save($sm_path);
+					$image->withFile($filepath)->fit(300, 300, 'center')->save($md_path);
+
+					$file = new File($filepath);
+					$sm_file = new File($sm_path);
+					$md_file = new File($md_path);
+
+					$sm_file->move(ROOTPATH . '\public\image\sm');
+					$md_file->move(ROOTPATH . '\public\image\md');
+					$file->move(ROOTPATH . '\public\image\lg');
+
+					$to_image = [
+						'small'		=> 'sm_' . $name,
+						'medium'	=> 'md_' . $name,
+						'large'		=> $name,
+					];
+					$id = $ImageModel->insert($to_image);
+					if ($id) {
+						$image = $id;
+					}
+					// return view('upload_success', $data);
+				}
+			}
 
 			$additionalData = [
 				'first_name' => $this->request->getPost('first_name'),
 				'last_name'  => $this->request->getPost('last_name'),
 				'company'    => $this->request->getPost('company'),
 				'phone'      => $this->request->getPost('phone'),
+				'img'		 => $image
 			];
+			// dd($additionalData);
 		}
 		if ($this->request->getPost() && $this->validation->withRequest($this->request)->run() && $this->ionAuth->register($identity, $password, $email, $additionalData)) {
 			// check to see if we are creating the user

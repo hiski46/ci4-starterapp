@@ -96,40 +96,15 @@ img#thumbnail{
 .img-thumbnail{
   max-width:fit-content ;
 }
-@media (max-width:1400px) {
-  img#thumbnail{
-    width:3vw;
-  }
-  
-}
-@media (max-width:1200px) {
-  img#thumbnail{
-    width:4vw;
-  }
-  
-}
-@media (max-width:992px) {
-  img#thumbnail{
-    width:6vw;
-  }
-  
-}
-@media (max-width:768px) {
-  img#thumbnail{
-    width:8vw;
-  }
-  
-}
-@media (max-width:576px) {
-  img#thumbnail{
-    width: 10vw;
-  }
-  
-}
 
-
-
-
+@media (orientation: landscape) {
+  img#thumbnail {
+    width: 6vw;
+  }
+}
+img#thumbnail {
+  width: 6vh;
+}
 
 
 
@@ -148,12 +123,36 @@ li.paginate_button.active a{
 /* End DataTable */
 
 /* Upload Foto Profil */
+.image-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .image-upload>input {
   display: none;
+
+}
+.image-upload>label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+label.file-input{
+  width: fit-content;
+}
 .image-upload label img {
   border-radius: 100%;
+  width: 15vh;
+  height: 15vh;
+  object-fit: cover;
+}
+
+@media (orientation: landscape) {
+  .image-upload label img {
+    width: 10vw;
+    height: 10vw;
+  }
 }
 
 .image-upload label img:hover{
@@ -170,7 +169,10 @@ li.paginate_button.active a{
 .icon-foto{
   position: absolute;
   z-index: 10;
-  color: grey;
+  color: rgb(32, 32, 32);
   display: none;
   width: 20px;
+}
+.icon-foto:hover{
+  cursor: pointer;
 }
