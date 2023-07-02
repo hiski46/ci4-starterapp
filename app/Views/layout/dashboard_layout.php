@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -62,11 +61,9 @@
     <link rel="stylesheet" href="/assets/css/dashboard.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/iziToast.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
-    <script src="/assets/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/assets/js/index.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/dataTables.bootstrap5.min.css">
+    <!-- jquery -->
+    <script src="/assets/js/jquery.min.js"></script>
 
 </head>
 
@@ -99,69 +96,21 @@
                                     Dashboard
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link <?= isAktif('auth'); ?>" href="/auth">
-                                    <span class="align-text-bottom">
-                                        <?= icon('people') ?>
-                                    </span>
-                                    <?= lang('auth.index_heading') ?>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                                    Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="users" class="align-text-bottom"></span>
-                                    Customers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                                    Reports
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="layers" class="align-text-bottom"></span>
-                                    Integrations
-                                </a>
-                            </li>
                         </ul>
 
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                            <span>Saved reports</span>
+                            <span></i> <?= lang('Auth.settings') ?></span>
                             <a class="link-secondary" href="#" aria-label="Add a new report">
                                 <span data-feather="plus-circle" class="align-text-bottom"></span>
                             </a>
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text" class="align-text-bottom"></span>
-                                    Current month
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text" class="align-text-bottom"></span>
-                                    Last quarter
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text" class="align-text-bottom"></span>
-                                    Social engagement
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text" class="align-text-bottom"></span>
-                                    Year-end sale
+                                <a class="nav-link <?= isAktif('auth'); ?>" href="/auth">
+                                    <span class="align-text-bottom">
+                                        <?= icon('people') ?>
+                                    </span>
+                                    <?= lang('auth.index_heading') ?>
                                 </a>
                             </li>
                         </ul>
@@ -186,8 +135,12 @@
             </div>
         </div>
         <div id="modal"></div>
-        <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
+        <script src="/assets/js/iziToast.min.js" type="text/javascript"></script>
+        <script src="/assets/js/index.js"></script>
+        <script src="/assets/js/jquery.dataTables.min.js"></script>
+        <script src="/assets/js/dataTables.bootstrap-5.min.js"></script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#loader').fadeOut('slow')

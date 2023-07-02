@@ -16,6 +16,23 @@ function modal(url) {
     })
 }
 
+function hideModal(){
+    $('#exampleModal').modal('hide');
+}
+
+function showLoader(){
+    $('#loader').show();
+}
+
+function hideLoaderr() {
+    $('#loader').fadeOut('slow');
+}
+
+function submitForm(id) {
+    hideModal();
+    $('#'+id).submit();
+}
+
 function modalAlertDelete(url, data){
     let html = `<div class="modal fade" id="exampleModal1" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -29,7 +46,7 @@ function modalAlertDelete(url, data){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal" >Cancel</button>
-          <button type="button" class="btn btn-danger rounded-0" onclick="deleteData('`+url+`')">Delete</button>
+          <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal" onclick="deleteData('`+url+`')">Delete</button>
         </div>
       </div>
     </div>

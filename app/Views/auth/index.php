@@ -6,7 +6,7 @@
 	</div>
 	<div class="col text-end">
 		<a href="auth/create_user" class="btn btn-sm btn-outline-secondary rounded-0"><?= icon('person-add') . ' ' . lang('Auth.index_create_user_link'); ?></a>
-		<a href="auth/create_group" class="btn btn-sm btn-outline-secondary rounded-0 mt-1"><?= icon('people') . ' ' . lang('Auth.index_create_group_link'); ?></a>
+		<a href="auth/create_group" class="btn btn-sm btn-outline-secondary rounded-0"><?= icon('people') . ' ' . lang('Auth.index_create_group_link'); ?></a>
 	</div>
 </div>
 
@@ -69,6 +69,7 @@
 
 	function deactiveUser(id, url) {
 		// alert(url);
+		hideModal();
 		$.ajax({
 			url: url,
 			data: {
@@ -77,6 +78,7 @@
 			},
 			type: 'POST',
 			beforeSend: function(data) {
+
 				$('#loader').show();
 			},
 			success: function(data) {

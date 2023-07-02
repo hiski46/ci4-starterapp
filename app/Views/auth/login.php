@@ -17,7 +17,7 @@
     </label>
   </div>
   <button class="btn w-100 btn-primary" type="submit"><?= lang('Auth.login_submit_btn') ?></button>
-  <p class="mt-5 mb-3 text-light">&copy; 2017–2022</p>
+  <p class="mt-5 mb-3 text-light">&copy; <?= date('Y'); ?></p>
 </form>
 
 <script>

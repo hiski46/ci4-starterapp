@@ -176,3 +176,12 @@ label.file-input{
 .icon-foto:hover{
   cursor: pointer;
 }
+
+/* Paginate */
+.page-item:last-child .page-link,.page-item:first-child .page-link{
+  border-radius: 0;
+  
+}
+li.paginate_button.active a{
+ border: solid 1px transparent
+}

@@ -668,6 +668,7 @@ class Auth extends MainController
 				$this->validation->setRule('password', lang('Auth.edit_user_validation_password_label'), 'required|min_length[' . $this->configIonAuth->minPasswordLength . ']|matches[password_confirm]');
 				$this->validation->setRule('password_confirm', lang('Auth.edit_user_validation_password_confirm_label'), 'required');
 			}
+
 			$ImageModel = new \App\Models\ImageModel();
 			$image = 1;
 			//Upload Image
@@ -698,12 +699,14 @@ class Auth extends MainController
 						'medium'	=> 'md_' . $name,
 						'large'		=> $name,
 					];
-					$id = $ImageModel->insert($to_image);
-					if ($id) {
-						$image = $id;
+					$idImage = $ImageModel->insert($to_image);
+					if ($idImage) {
+						$image = $idImage;
 					}
 					// return view('upload_success', $data);
 				}
+			} else {
+				$image = $this->request->getPost('old_foto_profil');
 			}
 			if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
 				$data = [
@@ -734,7 +737,7 @@ class Auth extends MainController
 				}
 
 				// check to see if we are updating the user
-				if ($this->ionAuth->update($user->id, $data)) {
+				if ($this->ionAuth->update($this->request->getPost('id'), $data)) {
 					$this->session->setFlashdata('message', $this->ionAuth->messages());
 				} else {
 					$this->session->setFlashdata('message', $this->ionAuth->errors($this->validationListTemplate));
@@ -796,7 +799,11 @@ class Auth extends MainController
 			true,
 			true,
 			true,
-			'lg'
+			'lg',
+			true,
+			'btn-primary',
+			"submitForm('ubah-user')",
+			lang('Auth.edit_user_submit_btn')
 		);
 	}
 

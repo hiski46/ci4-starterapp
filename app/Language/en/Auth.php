@@ -149,5 +149,8 @@ return [
 	'reset_password_validation_new_password_confirm_label' => 'Confirm New Password',
 
 	//Profil Picture
-	'profile_picture_lable'				=>	"Profile Picture"
+	'profile_picture_lable'				=>	"Profile Picture",
+
+	//Tambahan
+	'settings' 		=> 'Settings'
 ];

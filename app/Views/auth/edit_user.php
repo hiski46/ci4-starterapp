@@ -2,7 +2,7 @@
 
 <div id="infoMessage"><?php echo $message; ?></div>
 
-<?php echo form_open(uri_string()); ?>
+<?php echo form_open_multipart(uri_string(), ['onsubmit' => 'showLoader()', 'id'=>'ubah-user']); ?>
 <div class="row">
       <div class="col-12 col-lg-6 align-self-center">
             <div class=" mb-3 image-upload">
@@ -11,7 +11,7 @@
                         <img src="/image/md/<?= $user->medium; ?>" alt="<?= lang('Auth.profile_picture_lable'); ?>">
                   </label>
                   <input class="fileinput" type="file" id="formFile" name="foto_profil" accept="image/*">
-                  <input type="hidden" value="<?= $user->medium; ?>" name="old_foto_profil">
+                  <input type="hidden" value="<?= $user->img; ?>" name="old_foto_profil">
                   <script>
                         $('.fileinput').change(function(event) {
                               console.log($(this).val());
@@ -97,6 +97,6 @@
 
 <?php echo form_hidden('id', $user->id); ?>
 
-<p><?php echo form_submit('submit', lang('Auth.edit_user_submit_btn')); ?></p>
+<!-- <p><?php echo form_submit('submit', lang('Auth.edit_user_submit_btn')); ?></p> -->
 
 <?php echo form_close(); ?>
